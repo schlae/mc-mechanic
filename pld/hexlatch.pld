@@ -1,0 +1,60 @@
+Name     hexlatch ;
+PartNo   00 ;
+Date     1/9/2022 ;
+Revision 01 ;
+Designer TubeTimeUS ;
+Company    ;
+Assembly None ;
+Location   ;
+Device   g16v8a ;
+
+/* *************** INPUT PINS ******************** */
+PIN 1   = latch ;
+PIN 2   = in0 ;
+PIN 3   = in1 ;
+PIN 4   = in2 ;
+PIN 5   = in3 ;
+/* PIN 6, 7, 8, 9 not used */
+
+/* *************** OUTPUT PINS *********************/
+PIN 12  = seg0 ;
+PIN 13  = seg1 ;
+PIN 14  = seg2 ;
+PIN 15  = seg3 ;
+PIN 16  = seg4 ;
+PIN 17  = seg5 ;
+PIN 18  = seg6 ;
+/* PIN 19 is not used */
+
+/* 7 Segment Identifiers */
+/* --- 0 --- */
+/* |       | */
+/* 5       1 */
+/* |       | */
+/* --- 6 --- */
+/* |       | */
+/* 4       2 */
+/* |       | */
+/* --- 3 --- */
+
+FIELD indata = [in3..0] ;
+FIELD outdata = [seg6.d, seg5.d, seg4.d, seg3.d, seg2.d, seg1.d, seg0.d] ;
+
+TABLE indata => outdata {
+[0] => 'b'1000000 ;
+[1] => 'b'1111001 ;
+[2] => 'b'0100100 ;
+[3] => 'b'0110000 ;
+[4] => 'b'0011001 ;
+[5] => 'b'0010010 ;
+[6] => 'b'0000010 ;
+[7] => 'b'1111000 ;
+[8] => 'b'0000000 ;
+[9] => 'b'0010000 ;
+[A] => 'b'0001000 ;
+[B] => 'b'0000011 ;
+[C] => 'b'1000110 ;
+[D] => 'b'0100001 ;
+[E] => 'b'0000110 ;
+[F] => 'b'0001110 ;
+}

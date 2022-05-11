@@ -1,0 +1,43 @@
+Name     addrlatch ;
+PartNo   00 ;
+Date     1/10/2022 ;
+Revision 01 ;
+Designer TubeTimeUS ;
+Company    ;
+Assembly None ;
+Location   ;
+Device   g16v8 ; /* Should also work fine with a GAL22V10 */
+
+/* *************** INPUT PINS ******************** */
+PIN 1   = latch ;
+PIN 2   = a2 ;
+PIN 3   = a3 ;
+PIN 4   = a4 ;
+PIN 5   = a5 ;
+PIN 6   = a6 ;
+PIN 7   = a7 ;
+PIN 8   = a8 ;
+PIN 9   = a9 ;
+PIN 12  = a10 ;
+PIN 13  = a11 ;
+PIN 14  = a12 ;
+PIN 15  = a13 ;
+PIN 16  = a14 ;
+PIN 17  = a15 ;
+PIN 19  = select ;
+
+/* *************** OUTPUT PINS *********************/
+PIN 18  = sel1 ;
+
+a0 = 'b'0;
+a1 = 'b'0;
+
+FIELD addr = [a15..0];
+
+/* sel1.d = !(addr:['h'0108..010B]); */
+/* sel2.d = !(addr:['h'010C..010F]); */
+
+/* Replacement sel1 signal for HDSP-211x */
+/* sel1.d = !(addr:['h'0108..010F]); */
+
+sel1.d = (addr:['h'0108..010F] & (!select));
